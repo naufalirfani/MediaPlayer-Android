@@ -8,15 +8,26 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:background="@android:color/black"
+        android:background="#FFFFFF"
         android:layout_height="match_parent"
+        android:gravity="center"
         android:orientation="vertical">
+
+        <com.google.android.exoplayer2.ui.PlayerView
+            android:id="@+id/video_view"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"/>
+
+        <Button
+            android:id="@+id/btn_full"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Full Screen" />
 
         <VideoView
             android:id="@+id/videoView"
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="0dp" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
         <WebView
             android:id="@+id/mWebView"
             android:layout_width="match_parent"

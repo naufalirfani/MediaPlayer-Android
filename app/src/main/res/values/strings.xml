@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">VideoViewApp</string>
+    <string name="media_url_mp3"><![CDATA[https://firebasestorage.googleapis.com/v0/b/simplecrud-bb3c3.appspot.com/o/Captures%202020-03-31%2013-32-47.mp4?alt=media&token=5762bfad-20c2-473d-a302-0871956be2e7]]></string>
 </resources>
