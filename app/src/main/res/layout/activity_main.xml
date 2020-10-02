@@ -16,13 +16,8 @@
         <com.google.android.exoplayer2.ui.PlayerView
             android:id="@+id/video_view"
             android:layout_width="match_parent"
-            android:layout_height="250dp"/>
-
-        <Button
-            android:id="@+id/btn_full"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Full Screen" />
+            android:layout_height="match_parent">
+        </com.google.android.exoplayer2.ui.PlayerView>
 
         <VideoView
             android:id="@+id/videoView"
