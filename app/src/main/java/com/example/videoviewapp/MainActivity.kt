@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.view.WindowManager
+import android.widget.LinearLayout
 import android.widget.MediaController
 import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
@@ -77,27 +78,17 @@ class MainActivity : AppCompatActivity() {
             if (fullscreen) {
                 exoplayer_fullscreen_icon.setImageDrawable(
                     ContextCompat.getDrawable(
-                        this@Fullscreen,
+                        this@MainActivity,
                         R.drawable.ic_fullscreen_expand
                     )
                 )
                 window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_VISIBLE
-                if (supportActionBar != null) {
-                    supportActionBar!!.show()
-                }
                 requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-                val params =
-                    playerView.layoutParams as RelativeLayout.LayoutParams
-                params.width = ViewGroup.LayoutParams.MATCH_PARENT
-                params.height = (200 * applicationContext.resources
-                    .displayMetrics.density).toInt()
-                playerView.layoutParams = params
                 fullscreen = false
-                textView.setVisibility(View.VISIBLE)
             } else {
                 exoplayer_fullscreen_icon.setImageDrawable(
                     ContextCompat.getDrawable(
-                        this@Fullscreen,
+                        this@MainActivity,
                         R.drawable.ic_fullscreen_skrink
                     )
                 )
@@ -109,12 +100,11 @@ class MainActivity : AppCompatActivity() {
                 }
                 requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
                 val params =
-                    playerView.layoutParams as RelativeLayout.LayoutParams
+                    playerView.layoutParams as LinearLayout.LayoutParams
                 params.width = ViewGroup.LayoutParams.MATCH_PARENT
                 params.height = ViewGroup.LayoutParams.MATCH_PARENT
                 playerView.layoutParams = params
                 fullscreen = true
-                textView.setVisibility(View.INVISIBLE)
             }
         }
     }
