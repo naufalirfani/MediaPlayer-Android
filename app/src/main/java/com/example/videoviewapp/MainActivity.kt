@@ -142,7 +142,6 @@ class MainActivity : AppCompatActivity() {
                 simpleExoPlayer.setPlayWhenReady(true)
             }
         })
-
     }
 
     override fun onDestroy() {
