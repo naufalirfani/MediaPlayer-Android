@@ -9,15 +9,16 @@ import android.view.Window
 import android.view.WindowManager
 import android.widget.LinearLayout
 import android.widget.MediaController
-import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.google.android.exoplayer2.ExoPlayerFactory
-import com.google.android.exoplayer2.SimpleExoPlayer
+import com.google.android.exoplayer2.*
 import com.google.android.exoplayer2.source.ExtractorMediaSource
+import com.google.android.exoplayer2.source.TrackGroupArray
+import com.google.android.exoplayer2.trackselection.TrackSelectionArray
 import com.google.android.exoplayer2.ui.PlayerView
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.exo_player_control_view.*
 
 
@@ -124,10 +125,30 @@ class MainActivity : AppCompatActivity() {
         simpleExoPlayer.prepare(videoSource)
         simpleExoPlayer.playWhenReady = true
 
+        simpleExoPlayer.addListener(object : ExoPlayer.EventListener {
+            override fun onPlayerStateChanged(
+                playWhenReady: Boolean,
+                playbackState: Int
+            ) {
+                if (playbackState == Player.STATE_BUFFERING) {
+                    progressBar.visibility = View.VISIBLE
+                } else {
+                    progressBar.visibility = View.INVISIBLE
+                }
+            }
+            override fun onPlayerError(error: ExoPlaybackException) {
+                progressBar.visibility = View.VISIBLE
+                simpleExoPlayer.stop()
+                simpleExoPlayer.setPlayWhenReady(true)
+            }
+        })
+
     }
 
     override fun onDestroy() {
         super.onDestroy()
         simpleExoPlayer.release()
     }
+
+
 }
